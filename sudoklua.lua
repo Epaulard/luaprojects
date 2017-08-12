@@ -4,8 +4,8 @@
 
 -- Display the sudoku.
 local function display(sudoku)
-  for row = 1, 9 do
-    for column = 1, 9 do
+  for row = 1, S do
+    for column = 1, S do
 	  print(sudoku[row][column])
     end
     end
@@ -14,7 +14,7 @@ local function display(sudoku)
 
 -- Checks if num exists on a row
 local function rowHasNotNum(sudoku, row, num)
-  for column = 1,9 do
+  for column = 1,S do
     if sudoku[row][column] == num then
       return false
     end
@@ -24,7 +24,7 @@ end
 
 -- Checks if num exists on a column
 local function columnHasNotNum(sudoku, column, num)
-  for row = 1,9 do
+  for row = 1,S do
     if sudoku[row][column] == num then return false end
   end
   return true
@@ -59,8 +59,8 @@ end
 -- If not, returns false, plus the location on the
 -- first unassigned cell found.
 local function isSolved(sudoku)
-  for row = 1, 9 do
-    for column = 1, 9 do
+  for row = 1, S do
+    for column = 1, S do
       if sudoku[row][column] == 0 then
         return false, row, column
       end
@@ -70,14 +70,14 @@ local function isSolved(sudoku)
 end
 
 -- Sudoku solving via backtracking and recursion
--- sudoku  : a 2-dimensional grid of numbers (0-9)
+-- sudoku  : a 2-dimensional grid of numbers (0-S)
 --           0 matches unknown values to be found.
 -- returns : true, if a solution was found,
 --           false otherwise.
 local function solve(sudoku)
   local solved, row, column = isSolved(sudoku)
   if solved then return true end
-  for num = 1, 9 do
+  for num = 1, S do
     if isLegit(sudoku, row, column, num) then
       sudoku[row][column] = num
       if solve(sudoku) then return true end
@@ -141,6 +141,7 @@ run('An easy problem', function()
     {6, 9, 2, 3, 5, 1, 8, 7, 4},
     {7, 4, 5, 2, 8, 6, 3, 1, 9},
   }
+  S=9
   solve(problem)
   display(problem)
   assert(same(problem, solution))
@@ -171,6 +172,7 @@ run('A harder problem', function()
     {5, 4, 6, 2, 1, 7, 9, 3, 8},
     {3, 8, 1, 9, 6, 4, 5, 7, 2},
   }
+  S=9
   solve(problem)
   display(problem)
   assert(same(problem, solution))
