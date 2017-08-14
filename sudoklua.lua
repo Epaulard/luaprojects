@@ -2,15 +2,23 @@
 -- Initial version using only Backtracking and recursion
 -- Initial version is a fork from  Algorithm-Implementations / Sudoku / Lua / Yonaba / sudoku.lua (https://github.com/Yonaba)
 
+
+----------------------------------------------------------------------
+-- Print a grid. Unsolved cells are represented by "?".
+----------------------------------------------------------------------
+
+
 -- Display the sudoku.
+-- String for each line
 local function display(sudoku)
   for row = 1, S do
+    local line = ""
     for column = 1, S do
-	  print(sudoku[row][column])
+      line=line..(string.format("%s", sudoku[row][column]))
     end
-    end
+    print(string.format("%s", line))
   end
-
+end
 
 -- Checks if num exists on a row
 local function rowHasNotNum(sudoku, row, num)
