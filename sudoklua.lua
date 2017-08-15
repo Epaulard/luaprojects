@@ -3,20 +3,19 @@
 -- Initial version is a fork from  Algorithm-Implementations / Sudoku / Lua / Yonaba / sudoku.lua (https://github.com/Yonaba)
 
 
-----------------------------------------------------------------------
--- Print a grid. Unsolved cells are represented by "?".
-----------------------------------------------------------------------
-
 
 -- Display the sudoku.
--- String for each line
+-- Building a string for each line
 local function display(sudoku)
+print (('-'):rep(S+10))
   for row = 1, S do
-    local line = ""
+    local line = "| "
     for column = 1, S do
       line=line..(string.format("%s", sudoku[row][column]))
+      if ((column % 3)== 0) then line=line.." | " end
     end
     print(string.format("%s", line))
+    if ((row % 3)== 0) then print (('-'):rep(S+10)) end
   end
 end
 
