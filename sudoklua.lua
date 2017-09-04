@@ -31,11 +31,11 @@ local function columnHasNotNum(sudoku, column, num)
 end
 
 -- Given a (row, column) location on the sudoku grid
--- identifies the corresponding 3x3 box and checks if
+-- identifies the corresponding nxn box and checks if
 -- num exists in this box
 local function boxHasNotNum(sudoku, row, column, num)
-  row = math.floor((row - 1) / 3) * 3 + 1
-  column = math.floor((column - 1) / 3) * 3 + 1
+  row = math.floor((row - 1) / math.sqrt(S)) * math.sqrt(S) + 1
+  column = math.floor((column - 1) / math.sqrt(S)) * math.sqrt(S) + 1
   for rwOffset = 0, 2 do
     for clOffset = 0, 2 do
       if sudoku[row + rwOffset][column + clOffset] == num then
