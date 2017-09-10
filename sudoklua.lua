@@ -3,6 +3,11 @@
 -- Initial version is a fork from  Algorithm-Implementations / Sudoku / Lua / Yonaba / sudoku.lua (https://github.com/Yonaba)
 
 
+-- Look for Singleton
+-- Works for the full matrix or row, column and squares
+
+local function singleton(area)
+  end
 
 -- Display the sudoku.
 -- Building a string for each line
