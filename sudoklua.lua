@@ -2,15 +2,22 @@
 -- Initial version using only Backtracking and recursion
 -- Initial version is a fork from  Algorithm-Implementations / Sudoku / Lua / Yonaba / sudoku.lua (https://github.com/Yonaba)
 
--- Display the sudoku.
-local function display(sudoku)
-  for row = 1, S do
-    for column = 1, S do
-	  print(sudoku[row][column])
-    end
-    end
-  end
 
+
+-- Display the sudoku.
+-- Building a string for each line
+local function display(sudoku)
+print (('-'):rep(S+10))
+  for row = 1, S do
+    local line = "| "
+    for column = 1, S do
+      line=line..(string.format("%s", sudoku[row][column]))
+      if ((column % 3)== 0) then line=line.." | " end
+    end
+    print(string.format("%s", line))
+    if ((row % 3)== 0) then print (('-'):rep(S+10)) end
+  end
+end
 
 -- Checks if num exists on a row
 local function rowHasNotNum(sudoku, row, num)
