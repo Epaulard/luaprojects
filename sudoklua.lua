@@ -3,7 +3,6 @@
 -- Initial version is a fork from  Algorithm-Implementations / Sudoku / Lua / Yonaba / sudoku.lua (https://github.com/Yonaba)
 
 
-
 -- Display the sudoku.
 -- Building a string for each line
 local function display(sudoku)
